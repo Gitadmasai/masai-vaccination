@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body>
+    <div id="con">
+        <div id="nav">
+            <div id="nav1">
+                <h1>Masai Vaccination</h1>
+            </div>
+            <div id="nav2">
+    <a href="index.html"><button>Register</button></a>
+    <a href="dashboard.html"><button>Dashboard</button></a>
+    <a href="vaccinated.html"><button>Vaccinated</button></a>
+    
+    
+            </div>
+        </div>
+        <form style="border:1px solid black";  name="myform" onsubmit="return validateForm()" >
+        <div class="formdes" id="idnam">
+            <input type="text" name="idname" id="Un" placeholder="Unique ID" required/>
+        </div>
+        <div class="formdes" id="fnam">
+            <input type="text" name="fname" id="na" placeholder="Your Name" required/><b><span class="formerror"></span></b>
+        </div>
+        <div class="formdes" id="idnum">
+            <input type="number" name="idnumber" id="ag" placeholder="Your Age" required/>
+        </div>
+        <div class="formdes" id="radna">
+        <input type="radio"  name="radnam" id="em" value="">
+        <label for="html">Employee</label><br>
+        <input type="radio"  name="radnam" id="st" value="">
+        <label for="css">Student</label><br>
+    </div>
+    <div class="formdes" id="pree">
+        <select id="pz">
+            <option value="p0">p0</option>
+            <option value="p1">p1</option>
+            <option value="p2">p2</option>
+            <option value="p3">p3</option>
+        </select>
+    </div>
+    <dev class="formdes" >
+        <select id="cat">
+            <option value="covishield">Covishield</option>
+            <option value="covaxin">Covaxin</option>
+            <option value="sputnik">Sputnik</option>
+        </select>
+    </dev>
+    <button  id="submit" onclick="submitData()">Submit</button>
+    </form>
+    </div>
+
+</body>
+<script>
+function seterror(id, error){
+element = document.getElementById(id)
+element.getElementsByClassName("formerror")[0].innerHTML = error;
+}
+
+function validateForm(){
+    var returnval=true
+    var name = document.forms["myform"]["fname"].value;
+    if(name.length<5){
+        seterror("name","Length must be 4 or greater than 4")
+        returnval = false
+    }
+
+    return returnval
+}
+
+
+
+
+
+
+
+
+    let formDat=[]
+
+function submitData(){
+     //formDat.preventDefault()
+    let Unique = document.getElementById('Un').value
+    let Name = document.getElementById('na').value
+    let age = document.getElementById('ag').value
+    let typ = document.getElementById('em').value
+    let ptoz = document.getElementById('pz').value
+    let cattyp = document.getElementById('cat').value
+
+    let object={
+    unqname:Unique,
+    fName:Name,
+    myage:age,
+    mytyp:typ,
+    highpree:ptoz,
+    topcat:cattyp
+}
+formDat.push(object);
+console.log(object)
+// localStorage.setItem("book-list", JSON.stringify(formData));
+window.localStorage.setItem('student_list', JSON.stringify(formDat));
+console.log(formDat)
+}
+
+
+
+
+</script>
+</html>

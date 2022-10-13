@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="con">
+        <div id="nav">
+            <div id="nav1" >
+           <h1>Masai Vaccination</h1>
+            </div>
+            <div id="nav2">
+    
+                <a href="index.html"><button>Register</button></a>
+                <a href="dashboard.html"><button>Dashboard</button></a>
+                <a href="vaccinated.html"><button>Vaccinated</button></a>
+    
+            </div>
+        </div>
+        <div id="table" >
+            <table border="1px solid black">
+                <thead>
+                    <tr>
+                        <th>Unique ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Designation</th>
+                        <th>Priority</th>
+                        <th>Vaccine</th>
+                        <th>Delete</th>
+                        <th>Vaccinate</th>
+                        <th>OTP</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+    </div>
+</body>
+<script>
+
+    let data = JSON.parse(window.localStorage.getItem('student_list'));
+    console.log(data,"data")
+    
+    data.map((el)=>{
+    
+        var row =document.createElement("tr");
+            
+            var td1 =document.createElement("td");
+            td1.textContent = `${el.unqname}`;
+            var td2 =document.createElement("td");
+            td2.textContent = `${el.fName}`;
+            var td3 =document.createElement("td");
+            td3.textContent = `${el.myage}`;
+            var td4 =document.createElement("td");
+            td4.textContent = `${el.mytyp}`;
+            var td5 =document.createElement("td");
+            td5.textContent = `${el.highpree}`;
+            var td6 =document.createElement("td");
+            td6.textContent = `${el.topcat}`;
+            var td9=document.createElement("td");
+            td9.textContent="733899"
+            var td7 =document.createElement("button");
+            
+            var td8 =document.createElement("td");
+            td7.textContent = "Delete";
+            td7.addEventListener("click", BuyBook);
+            td8.textContent="Vaccinate"
+            row.append(td1, td2, td3, td4,td5, td6,td7,td8,td9);
+            document.querySelector("tbody").append(row);
+        console.log(el)
+        function BuyBook(event){
+                console.log("Rahul")
+                console.log(el)
+                window.localStorage.removeItem('el');
+            }
+    })
+    
+    
+    </script>
+</html>
